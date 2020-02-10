@@ -53,7 +53,7 @@ func main() {
     err = client.Schedule(t2, time.Now().Add(24 * time.Hour))
 
     // If processing fails, retry up to 10 times (Default is 25)
-    err = client.Schedule(t1, time.Now(), asynq.Retry(10))
+    err = client.Schedule(t1, time.Now(), asynq.MaxRetry(10))
 
     // Use custom queue called "critical"
     err = client.Schedule(t1, time.Now(), asynq.Queue("critical"))
